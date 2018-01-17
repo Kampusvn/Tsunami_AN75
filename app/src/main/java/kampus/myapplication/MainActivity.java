@@ -33,11 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         new EarthquakeAsynctask().execute();
     }
-
-    private void logOfMainActivity() {
-        Log.e(TAG, "function of mainactivity");
-    }
-
+    
     private URL creatUrl(String stringUrl) throws MalformedURLException{
         URL url = null;
         try {
@@ -54,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             Toast.makeText(MainActivity.this,"Json Data is downloading",Toast.LENGTH_LONG).show();
-            logOfMainActivity();
         }
 
         @Override
@@ -72,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            logOfMainActivity();
             Log.e(TAG, "Response from url: " + jsonStr);
             if (!TextUtils.isEmpty(jsonStr)) {
                 try {
@@ -117,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            logOfMainActivity();
             ListAdapter adapter = new ListAdapter();
             adapter.setListItems(listObject);
             listView.setAdapter(adapter);
